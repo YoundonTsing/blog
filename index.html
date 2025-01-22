@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href="#about" @click="scrollToSection('about')">关于我</a></li>
+                <li><a href="#blog" @click="scrollToSection('blog')">博客</a></li>
+                <li><a href="#contact" @click="scrollToSection('contact')">联系我</a></li>
+            </ul>
+        </nav>
+
+        <!-- 个人简介 -->
+        <section id="about" class="section">
+            <h1>关于我</h1>
+            <div class="content">
+                <img src="4.jpg" alt="头像" class="profile-pic">
+                <p>
+                    你好！我是一名专注于新能源汽车领域的三电大数据分析工程师。主要研究方向包括电池、电机、电控系统的性能分析和优化。通过深入的数据挖掘和分析，为新能源汽车的技术创新和性能提升提供数据支持。
+                </p>
+                <p>
+                    擅长运用机器学习和人工智能技术，对车辆运行数据进行建模分析，特别在电池健康管理、能量效率优化和预测性维护等方面有丰富经验。热衷于探索新能源技术发展，致力于推动汽车产业的绿色革命。
+                </p>
+            </div>
+        </section>
+
+        <!-- 轮播图 -->
+        <div class="carousel">
+            <img :src="images[currentIndex]" alt="轮播图片" class="carousel-image">
+            <button class="carousel-btn prev" @click="prevImage">&lt;</button>
+            <button class="carousel-btn next" @click="nextImage">&gt;</button>
+        </div>
+
+        <!-- 博客文章列表 -->
+        <section id="blog" class="section">
+            <h1>我的博客</h1>
+            <div class="blog-list">
+                <div v-for="post in posts" :key="post.id" class="blog-post">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.summary }}</p>
+                    <a :href="post.link" target="_blank">阅读更多</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系信息 -->
+        <section id="contact" class="section">
+            <h1>联系我</h1>
+            <div class="content">
+                <p>欢迎通过以下方式联系我：</p>
+                <ul>
+                    <li>邮箱：<a href="https://mail.qq.com">example@example.com</a></li>
+                    <li>微博：<a href="https://weibo.com/example" target="_blank">@example</a></li>
+                    <li>GitHub：<a href="https://github.com/example" target="_blank">github.com/example</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
